@@ -1,27 +1,15 @@
 package gscdn.miniZen.Service;
 
 import gscdn.miniZen.model.Manager;
-import gscdn.miniZen.repository.ManagerMapper;
-import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 
-import java.util.List;
+public interface ManagerService {
+    ArrayList<Manager> getManager(Manager manager); //이름으로 가져오기
+    ArrayList<Manager> getManagerList(); //전체리스트
+    void createManager(Manager manager); //추가
+    void updateManager(Manager manager);  //수정
+    void deleteManager(Manager manager);  //삭제
 
-@Service
-public class ManagerService {
-    ManagerMapper managerMapper;
-    public ManagerService(ManagerMapper managerMapper){ //ManagerMapper를 DI 받음.
-        this.managerMapper = managerMapper;
-    }
-    public List<Manager> getManagerList(){
-        return managerMapper.getManagerList();
-    }
-    public Manager getManager(String name){
-        return managerMapper.getManager(name);
-    }
-    public int createManager(Manager manager){
-        return managerMapper.updateManager(manager);
-    }
-    public int deleteManager(String name){
-        return managerMapper.deleteManager(name);
-    }
+    //////++컬럼명을 누르면 해당 컬럼에 따라 정렬되어야 한다. 정렬메서드 구상해야./////
+
 }
