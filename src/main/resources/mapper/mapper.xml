@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-</beans>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gscdn.miniZen.repository.ManagerMapper">
+
+    <select id="getManagerList" resultType="Manager">
+       select @rownum := @rownum+1 as code, m.name as 담당자명, m.phone as 연락처, m.email as 이메일주소, m.company as 소속회사
+       from manager as m
+            (select @rownum:=0) as r
+    </select>
+
+    <select id="getManager" resultType="Manager">
+        select * from manager where name = #{name}
+    </select>
+
+    <insert id="createManager">
+        insert into manager(name,phone,email,company) values(#{name},#{phone},#{email},#{company})
+    </insert>
+</mapper>
