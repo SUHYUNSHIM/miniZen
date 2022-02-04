@@ -5,9 +5,8 @@
 <mapper namespace="gscdn.miniZen.repository.ManagerMapper">
 
     <select id="getManagerList" resultType="Manager">
-       select @rownum := @rownum+1 as code, m.name as 담당자명, m.phone as 연락처, m.email as 이메일주소, m.company as 소속회사
-       from manager as m
-            (select @rownum:=0) as r
+        select m.code, m.name  담당자명, m.phone 연락처, m.email 이메일주소, m.company 소속회사
+        from manager m
     </select>
 
     <select id="getManager" resultType="Manager">

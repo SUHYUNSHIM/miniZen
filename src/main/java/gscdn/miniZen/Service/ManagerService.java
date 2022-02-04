@@ -1,7 +1,10 @@
 package gscdn.miniZen.Service;
 
 import gscdn.miniZen.model.Manager;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
+
 
 public interface ManagerService {
     ArrayList<Manager> getManager(Manager manager); //이름으로 가져오기
