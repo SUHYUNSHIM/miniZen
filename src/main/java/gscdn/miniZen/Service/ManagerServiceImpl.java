@@ -21,8 +21,8 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     @Transactional //전체 영업 담당자(manager) 조회
-    public ArrayList<Manager> getManagerList() {
-        return managerMapper.getManagerList();
+    public ArrayList<Manager> getManagerList() throws Exception {
+        return managerMapper.getManagerList(); //service가 mapper를 호출한다.
     }
 
     @Override //추가

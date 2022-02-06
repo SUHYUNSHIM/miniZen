@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface ManagerService {
     ArrayList<Manager> getManager(Manager manager); //이름으로 가져오기
-    ArrayList<Manager> getManagerList(); //전체리스트
+    ArrayList<Manager> getManagerList() throws Exception; //전체리스트
     void createManager(Manager manager); //추가
     void updateManager(Manager manager);  //수정
     void deleteManager(Manager manager);  //삭제
