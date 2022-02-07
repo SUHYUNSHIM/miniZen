@@ -20,7 +20,7 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    @Transactional //전체 영업 담당자(manager) 조회
+    //@Transactional //전체 영업 담당자(manager) 조회
     public ArrayList<Manager> getManagerList() throws Exception {
         return managerMapper.getManagerList(); //service가 mapper를 호출한다.
     }
@@ -31,12 +31,13 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override  //수정
+    @Transactional
     public void updateManager(Manager manager) {
         managerMapper.updateManager(manager);
     }
 
     @Override  //삭제
-    public void deleteManager(Manager manager) {
-        managerMapper.deleteManager(manager);
+    public void deleteManager(Integer code) {
+        managerMapper.deleteManager(code);
     }
 }

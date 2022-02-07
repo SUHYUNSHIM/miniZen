@@ -13,5 +13,5 @@ public interface ManagerMapper {
     ArrayList<Manager> getManagerList() throws Exception; //전체 리스트
     void createManager(Manager manager); //추가
     void updateManager(Manager manager); //수정
-    void deleteManager(Manager manager); //삭제
+    void deleteManager(Integer code); //삭제
 }
