@@ -4,6 +4,7 @@ import gscdn.miniZen.Service.ManagerService;
 import gscdn.miniZen.model.Manager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
@@ -33,13 +34,19 @@ public class ManagerController {
     //추가
     @PostMapping("/register")
     public void create(@RequestBody Manager manager){
+        //System.out.println("코드 값이 저장되는가? "+manager.getCode()); //null
+        log.info(String.valueOf(manager));
         managerservice.createManager(manager);
+        log.info(String.valueOf(manager));
+
     }
 
     //수정
-    @PutMapping("/update/{code}")
+    @PutMapping(value = "/update/{code}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateManager(@PathVariable("code") Integer code, @RequestBody Manager manager){  //선택한 column, code 번호의 수정창이 열림
-       //manager.setCode(code);
+        manager.setCode(code);
+        System.out.println("코드 번호"+manager.getCode()); //현재 code가 호출되지만, column의 값으로 저장되지는 않는다. null 출력
+        System.out.println("바뀐 정보1"+manager.getCompany());
         managerservice.updateManager(manager);
     }
 
@@ -47,7 +54,9 @@ public class ManagerController {
     //삭제
     @GetMapping("/delete/{code}")
     public void deleteManager(@PathVariable("code") Integer code){ //path로 받은 code의 숫자의 것을 삭제한다.
-        managerservice.deleteManager(code); //삭제 시 앞 뒤 코드 한칸씩 땡겨져야..
+        Manager manager = new Manager();
+        manager.setCode(code);
+        managerservice.deleteManager(code); //진짜 삭제하겠냐고 alert 창 띄워야.
     }
 
     //객체 저장 예시.
@@ -71,9 +80,6 @@ public class ManagerController {
         return mv;
     }*/
 
-
-    //검색 결과 화면 -->url을 다르게 해야 하나?
-    //@RequestMapping(value="/")
-    //검색 리스트를 불러오는 ajax 요청 만들기
+    //rest -> vue에 전달 -> vue에서 랜더링....
 
 }

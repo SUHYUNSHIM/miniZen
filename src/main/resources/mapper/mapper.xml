@@ -15,7 +15,7 @@
     </select>
 
     <insert id="createManager" parameterType="Manager" useGeneratedKeys="true" keyProperty="code">
-        insert into manager values(#{code},#{name},#{phone},#{email},#{company})
+        insert into manager(code,name,phone,email,company) values(#{code},#{name},#{phone},#{email},#{company})
     </insert>
 
     <update id="updateManager" parameterType="Manager">
