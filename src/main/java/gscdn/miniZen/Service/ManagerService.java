@@ -11,7 +11,9 @@ public interface ManagerService {
     void createManager(Manager manager); //추가
     void updateManager(Manager manager);  //수정
     void deleteManager(Integer code);  //삭제
-    //void registerCode(Manager ma)
+
+    Integer registerCode(); //등록 코드 반환
+    //void autoCodeUpdate(Integer code);
 
     //////++컬럼명을 누르면 해당 컬럼에 따라 정렬되어야 한다. 정렬메서드 구상해야./////
 

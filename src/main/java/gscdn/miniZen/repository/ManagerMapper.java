@@ -14,4 +14,7 @@ public interface ManagerMapper {
     void createManager(Manager manager); //추가
     void updateManager(Manager manager); //수정
     void deleteManager(Integer code); //삭제
+
+    Integer autoCode(); //최근 등록 코드번호 반환.
+    //void autoCodeUpdate(Integer code);
 }

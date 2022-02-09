@@ -38,4 +38,14 @@ public class ManagerServiceImpl implements ManagerService {
     public void deleteManager(Integer code) {
         managerMapper.deleteManager(code);
     }
+
+    @Override //최근 등록 코드를 반환.
+    public Integer registerCode() {
+        return managerMapper.autoCode();
+    }
+
+//    @Override
+//    public void autoCodeUpdate(Integer code) {
+//        managerMapper.autoCodeUpdate(code);
+//    }
 }

@@ -5,18 +5,27 @@
 <mapper namespace="gscdn.miniZen.repository.ManagerMapper">
 
     <select id="getManagerList" resultType="Manager" >
-        select @rownum:= @rownum+1 code, m.name, m.phone , m.email , m.company
-        from (select @rownum:=0) r, manager m
-        order by code
+        select code, name, phone , email , company
+        from manager
     </select>
 
     <select id="getManager" parameterType="string" resultType="Manager">
         select * from manager where name = #{name}
     </select>
 
-    <insert id="createManager" parameterType="Manager" useGeneratedKeys="true" keyProperty="code">
+    <insert id="createManager" parameterType="Manager" >
         insert into manager(code,name,phone,email,company) values(#{code},#{name},#{phone},#{email},#{company})
+
     </insert>
+
+    <select id="autoCode" resultType="Integer">
+        select last_insert_id()
+    </select>
+
+
+<!--    <update id="autoCodeUpdate" parameterType="Integer">-->
+<!--        update manager set code = #{code} where @rownum = #{code}-->
+<!--    </update>-->
 
     <update id="updateManager" parameterType="Manager">
         update manager set name = #{name} , phone =#{phone}, email =#{email}, company=#{company}
