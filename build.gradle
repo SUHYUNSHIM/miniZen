@@ -38,6 +38,8 @@ dependencies {
 
 	//spring security
 	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.6.3' //이메일 인증
+
 }
 
 tasks.named('test') {
