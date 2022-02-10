@@ -8,7 +8,7 @@ select m.name, m.phone, m.email, m.company, @curRow := @curRow +1 code
 from manager m
 join (select @curRow := 0) r;
 
-# alter table manager drop code;
+alter table manager drop code;
 alter table manager add code int(5) primary key auto_increment first;
 alter table manager modify code int(5) not null;
 
