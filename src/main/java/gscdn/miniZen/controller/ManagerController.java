@@ -47,6 +47,7 @@ public class ManagerController {
         manager.setCode(code);
         System.out.println("코드 번호"+manager.getCode());
         managerservice.updateManager(manager); //기존값을 다 manager로 가져왔다는 전제로, code번호 제외 모든 칼럼을 넘겨주어야 한다.
+        //mapper와 JPA의 entity 방식의 차이점. 하나의 item을 수정할 수 없다. mapper는 모두 받아와야 한다는 것.
     }
 
 
